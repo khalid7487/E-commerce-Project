@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Category;
+import entity.Product;
 import entity.SubCategory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -32,6 +33,20 @@ public class AddDao {
             Session session = factory.openSession();            
             session.beginTransaction();
             session.save(subcat);
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        } catch (Exception e) {
+            return  false;
+        }
+
+    }
+     public boolean addProduct(Product product) {
+        try {
+            SessionFactory factory = HibernateUtil.getSessionFactory();
+            Session session = factory.openSession();            
+            session.beginTransaction();
+            session.save(product);
             session.getTransaction().commit();
             session.close();
             return true;

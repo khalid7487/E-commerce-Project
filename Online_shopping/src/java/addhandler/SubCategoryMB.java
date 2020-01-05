@@ -1,4 +1,3 @@
-
 package addhandler;
 
 import dao.AddDao;
@@ -19,8 +18,11 @@ import javax.faces.model.SelectItem;
 @ManagedBean
 @SessionScoped
 public class SubCategoryMB {
-    SubCategory subcat=new SubCategory();
-    Category category=new Category();
+
+    SubCategory subcat = new SubCategory();
+    Category category = new Category();
+    String catname;
+    List<Category> listCat;
 
     public Category getCategory() {
         return category;
@@ -29,8 +31,6 @@ public class SubCategoryMB {
     public void setCategory(Category category) {
         this.category = category;
     }
-    String catname;
-    List<Category> listCat;
 
     public List<Category> getListCat() {
         return listCat;
@@ -39,6 +39,7 @@ public class SubCategoryMB {
     public void setListCat(List<Category> listCat) {
         this.listCat = listCat;
     }
+
     public SubCategory getSubcat() {
         return subcat;
     }
@@ -54,25 +55,25 @@ public class SubCategoryMB {
     public void setCatname(String catname) {
         this.catname = catname;
     }
-     public String addSubCategory(){
-        listCat=new ListDao().catListByName(catname);
+
+    public String addSubCategory() {
+        listCat = new ListDao().catListByName(catname);
         category.setCatId(listCat.get(0).getCatId());
         subcat.setCategory(category);
         subcat.setSubCatName(subcat.getSubCatName());
         subcat.setSubCatDesc(subcat.getSubCatDesc());
-        boolean status=new AddDao().addSubCategory(subcat);
-        if(status){
-            FacesContext.getCurrentInstance().addMessage( null,new 
-     FacesMessage(FacesMessage.SEVERITY_INFO, "Data Saved", ""));
-        }else{
-            FacesContext.getCurrentInstance().addMessage( null,new 
-     FacesMessage(FacesMessage.SEVERITY_WARN, "Data not Saved", ""));
+        boolean status = new AddDao().addSubCategory(subcat);
+        if (status) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Data Saved", ""));
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Data not Saved", ""));
         }
-            
+
         return null;
     }
-     public List<SelectItem> getCategoryName(){
-         List<SelectItem> catname=new ListDao().catList();
-         return catname;
-     }
+
+    public List<SelectItem> getCategoryName() {
+        List<SelectItem> catname = new ListDao().catList();
+        return catname;
+    }
 }
