@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import org.primefaces.model.UploadedFile;
 
 @ManagedBean
 @SessionScoped
@@ -20,7 +21,7 @@ public class ProductMB {
     String subcatname;
     String catname="";
     List<SubCategory> listSubCat;
-
+    UploadedFile file;
     public String getCatname() {
         return catname;
     }
