@@ -34,7 +34,7 @@
                 <h:outputLabel value="Product Description"></h:outputLabel>
                 <p:inputText value="#{productMB.product.proDesc}"></p:inputText>
                 <p:commandButton action="#{productMB.addProduct()}" value="save"
-                                 update="msg"></p:commandButton>
+                                 update="msg" ajax="false"></p:commandButton>
             </p:panelGrid>
         </h:form>
     </h:body>
