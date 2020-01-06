@@ -1,27 +1,42 @@
-
 package addhandler;
+
 
 import dao.AddDao;
 import dao.ListDao;
 import entity.Product;
 import entity.SubCategory;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.ServletContext;
+import org.apache.commons.io.FileUtils;
 import org.primefaces.model.UploadedFile;
 
 @ManagedBean
 @SessionScoped
 public class ProductMB {
-    Product product=new Product();
-    SubCategory subcat=new SubCategory();
+
+    Product product = new Product();
+    SubCategory subcat = new SubCategory();
     String subcatname;
-    String catname="";
+    String catname = "";
     List<SubCategory> listSubCat;
     UploadedFile file;
+
+    public UploadedFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
+
     public String getCatname() {
         return catname;
     }
@@ -61,7 +76,9 @@ public class ProductMB {
     public void setListSubCat(List<SubCategory> listSubCat) {
         this.listSubCat = listSubCat;
     }
-     public String addProduct() {
+
+    public String addProduct() {
+        upload();
         listSubCat = new ListDao().subcatListByName(subcatname);
         subcat.setSubCatId(listSubCat.get(0).getSubCatId());
         product.setSubCategory(subcat);
@@ -79,7 +96,32 @@ public class ProductMB {
 
         return null;
     }
-     public List<SelectItem> getSubCategoryName() {
+
+    public void upload() {
+        if (file != null) {
+            try {
+                FacesContext context=FacesContext.getCurrentInstance();
+                ServletContext servletcontex=(ServletContext)context.
+                        getExternalContext().getContext();
+                String dbpath=servletcontex.getRealPath("/");
+                String webcut=dbpath.substring(0, dbpath.lastIndexOf("\\"));
+                String buildcut=webcut.substring(0, webcut.lastIndexOf("\\"));
+                String mainURLPath=buildcut.substring(0, buildcut.lastIndexOf("\\"));
+                InputStream inputStrim=file.getInputstream();
+                String path=mainURLPath+"Online_shopping\\web\\resources\\images\\"+file.getFileName();
+                File destFile=new File(path);
+                if(!destFile.exists()){
+                    FileUtils.copyInputStreamToFile(inputStrim, destFile);
+                }
+                product.setProUrl(file.getFileName().toString());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public List<SelectItem> getSubCategoryName() {
         List<SelectItem> subcatname = new ListDao().subcatList(catname);
         return subcatname;
     }

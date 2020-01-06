@@ -9,7 +9,7 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form>
+        <h:form enctype="multipart/form-data">
             <p:messages id="msg" closable="true" showDetail="true"></p:messages>
             <p:panelGrid columns="2">
                 <h:outputLabel value="Select Category Name"></h:outputLabel>
@@ -29,6 +29,8 @@
                 <p:inputText value="#{productMB.product.proQty}"></p:inputText>
                 <h:outputLabel value="Product Price"></h:outputLabel>
                 <p:inputText value="#{productMB.product.proPrice}"></p:inputText>
+                <h:outputLabel value="Select Image"></h:outputLabel>
+                <p:fileUpload value="#{productMB.file}" mode="simple"/>
                 <h:outputLabel value="Product Description"></h:outputLabel>
                 <p:inputText value="#{productMB.product.proDesc}"></p:inputText>
                 <p:commandButton action="#{productMB.addProduct()}" value="save"
