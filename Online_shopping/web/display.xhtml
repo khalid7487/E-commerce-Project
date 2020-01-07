@@ -10,6 +10,9 @@
     </h:head>
     <h:body>
         <h:form id="form">
+            <p:panel header="Cart">
+                <h:outputText value="#{cartHandlerMB.cartsize} #{cartHandlerMB.item}" id="cart"/>
+            </p:panel>
             <p:dataGrid var="product" value="#{displayProductMB.allProduct}"
                         columns="3" rows="10" paginator="true" id="p"
                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
@@ -21,6 +24,14 @@
                     <h:panelGrid columns="1">
                         <h:graphicImage name="#{product.proUrl}"   library="images" width="200" height="200"/>
                         <h:outputText value="#{product.proPrice}"/>
+                        <h:outputText value="Quantity"/>
+                        <h:inputText value="#{cartHandlerMB.quantity}"/>
+                        <p:commandButton action="#{cartHandlerMB.processCart()}" value="Add to Cart" update=":form:cart">
+                            <f:setPropertyActionListener target="#{cartHandlerMB.productid}" value="#{product.proId}"/>
+                            <f:setPropertyActionListener target="#{cartHandlerMB.productname}" value="#{product.proName}"/>
+                            <f:setPropertyActionListener target="#{cartHandlerMB.price}" value="#{product.proPrice}"/>
+                            
+                        </p:commandButton>
                     </h:panelGrid>
                     <p:commandLink update=":form:pro" oncomplete="PF('proDetails').show()" title="View Details">
                         <h:outputText styleClass="ui-icon ui-icon-search"/>
@@ -39,11 +50,8 @@
                         <h:outputText value="#{displayProductMB.selectedProduct.proPrice}"/>
                         <h:outputText value="Product Quantity"></h:outputText>
                         <h:outputText value="#{displayProductMB.selectedProduct.proQty}"/>
-                        <h:outputText value="Product Subcategory Name"></h:outputText>
-                        <h:outputText value="#{displayProductMB.selectedProduct.subCategory.subCatName}"/>
-                        <h:outputText value="Description"></h:outputText>
+                         <h:outputText value="Description"></h:outputText>
                         <h:outputText value="#{displayProductMB.selectedProduct.proDesc}"/>
-                        <h:outputText value=""></h:outputText>
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
