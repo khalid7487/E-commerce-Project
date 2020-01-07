@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dao;
 
 import entity.Category;
+import entity.Product;
 import entity.SubCategory;
 import java.util.List;
 import org.hibernate.Session;
@@ -47,6 +44,14 @@ public class ListDao {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         List<SubCategory> cList=session.createQuery("SELECT al FROM SubCategory al where lower(subCatName)='"+name.toLowerCase()+"'").list();
+        cList.toString();
+        session.close();
+        return cList;
+    }
+     public List allProductList() {
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        List<Product> cList=session.createQuery("SELECT al FROM Product al").list();
         cList.toString();
         session.close();
         return cList;

@@ -108,7 +108,7 @@ public class ProductMB {
                 String buildcut=webcut.substring(0, webcut.lastIndexOf("\\"));
                 String mainURLPath=buildcut.substring(0, buildcut.lastIndexOf("\\"));
                 InputStream inputStrim=file.getInputstream();
-                String path=mainURLPath+"\\Online_shopping\\web\\resources\\images\\"+file.getFileName();
+                String path=mainURLPath+"\\web\\resources\\images\\"+file.getFileName();
                 File destFile=new File(path);
                 if(!destFile.exists()){
                     FileUtils.copyInputStreamToFile(inputStrim, destFile);
