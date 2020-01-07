@@ -12,6 +12,7 @@
         <h:form id="form">
             <p:panel header="Cart">
                 <h:outputText value="#{cartHandlerMB.cartsize} #{cartHandlerMB.item}" id="cart"/>
+                <h:outputLink value="viewcart.xhtml">View Cart</h:outputLink>
             </p:panel>
             <p:dataGrid var="product" value="#{displayProductMB.allProduct}"
                         columns="3" rows="10" paginator="true" id="p"
@@ -25,11 +26,12 @@
                         <h:graphicImage name="#{product.proUrl}"   library="images" width="200" height="200"/>
                         <h:outputText value="#{product.proPrice}"/>
                         <h:outputText value="Quantity"/>
-                        <h:inputText value="#{cartHandlerMB.quantity}"/>
-                        <p:commandButton action="#{cartHandlerMB.processCart()}" value="Add to Cart" update=":form:cart">
+                        <h:inputText binding="#{input1}"/>
+                        <p:commandButton action="#{cartHandlerMB.processCart(input1.value)}" value="Add to Cart" update=":form:cart">
                             <f:setPropertyActionListener target="#{cartHandlerMB.productid}" value="#{product.proId}"/>
                             <f:setPropertyActionListener target="#{cartHandlerMB.productname}" value="#{product.proName}"/>
                             <f:setPropertyActionListener target="#{cartHandlerMB.price}" value="#{product.proPrice}"/>
+                            <f:setPropertyActionListener target="#{cartHandlerMB.quantity}" value="#{product.proQty}"/>
                             
                         </p:commandButton>
                     </h:panelGrid>

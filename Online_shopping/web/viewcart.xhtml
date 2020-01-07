@@ -12,9 +12,7 @@
         <h:form id="form">
            
             <p:dataTable var="cart" value="#{cartHandlerMB.cartList}"
-                        rows="10" paginator="true" id="p"
-                        paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                        rowsPerPageTemplate="6,12,16">
+                        rows="10">
                 <f:facet name="header">
                     <h:outputLabel value="Your Cart"/>
                 </f:facet>

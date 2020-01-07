@@ -103,8 +103,9 @@ public class CartHandlerMB {
     public void setTotal(double total) {
         this.total = total;
     }
-    public String processCart(){
+    public String processCart(int qty){
         CartBind cb=new CartBind();
+        quantity=qty;
         cb.setProductname(productname);
         cb.setQuantity(quantity);
         cb.setPrice(price);
