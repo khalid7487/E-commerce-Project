@@ -80,7 +80,10 @@ public class ShoppingCart {
     
     public void removeCart(Item i){
         for (Item item : cart) {
-            
+            if(item.equals(i)){
+                cart.remove(i);
+                break;
+            }
         }
     }
 }

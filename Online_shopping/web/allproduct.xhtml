@@ -33,10 +33,12 @@
                     <h:panelGrid columns="1">
                         <h:graphicImage name="#{p.proUrl}"   library="images" width="200" height="200"/>
                         <h:outputText value="Price: #{p.proPrice}"/>
-                        <p:commandButton   action="#{shoppingCart.addtoCart(p)}" value="Add to Cart" ajax="false"/>       
-                    </h:panelGrid>
+                        <p:commandButton update=":form:cart" action="#{shoppingCart.addtoCart(p)}" value="Add to Cart" ajax="false" ></p:commandButton> 
+                    </h:panelGrid>             
                 </p:panel>
+
             </p:dataGrid> 
+
         </h:form>
     </h:body>
 </html>
