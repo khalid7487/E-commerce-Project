@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_cart"/>
+        <input type="hidden" name="upload" value="1"/>
+        <c:set var="dem" value="1"/>
+        <c:forEach items="#{shoppingCart.cart}" var="i">
+            <input type="hidden" name="item_number_#{dem}" value="#{i.p.proId}"/>
+            <input type="hidden" name="item_name_#{dem}" value="#{i.p.proName}"/>
+            <input type="hidden" name="quantity_#{dem}" value="#{i.quantity}"/>
+            <input type="hidden" name="amount_#{dem}" value="#{i.p.proPrice}"/>
+            <c:set var="dem" value="#{dem+1}"/>
+        </c:forEach>
+        <input type="hidden" name="business" value="sb-k18ss635288@business.example.com"/>
+        <input type="hidden" name="return" value="http://localhost:8080/Online_shopping/success.xhtml"/>
+        <input type="hidden" name="cancel" value="http://localhost:8080/Online_shopping/fail.xhtml"/>
+        <input type="image" name="submit" src="https://founderu.selz.com/wp-content/uploads/2013/07/paypalbuynow-240x150.png"
+               border="0" alt="Paypal- The sater, easier way to pay online"/>
+    </form>
+    </h:body>
+    
+</html>
+

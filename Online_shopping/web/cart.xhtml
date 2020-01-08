@@ -35,6 +35,7 @@
                 </f:facet>
             </p:dataTable>
             <p:commandButton value="Update" action="#{shoppingCart.updateCart()}" ajax="false"/>
+            <p:commandButton value="Process Cart" action="#{shoppingCart.payment()}" ajax="false"/>
             <h:outputLink value="allproduct.xhtml">Continue Shopping</h:outputLink>
 <!--            <h:outputLink value="paytype.xhtml">Continue Shopping</h:outputLink>-->
             

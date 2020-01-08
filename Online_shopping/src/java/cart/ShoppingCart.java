@@ -86,4 +86,7 @@ public class ShoppingCart {
             }
         }
     }
+    public String payment(){
+        return "payment";
+    }
 }
