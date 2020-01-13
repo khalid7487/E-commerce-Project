@@ -7,23 +7,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta name="description" content=""/>
-        <meta name="author" content=""/>
+
         <title>Home | SHOP-ONLINE</title>
-        <link href="css/price-range.css" rel="stylesheet" type="text/css"/>
-        <link href="css/prettyPhoto.css" rel="stylesheet" type="text/css"/>
-        <link href="css/main.css" rel="stylesheet" type="text/css"/>
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/animate.css" rel="stylesheet" type="text/css"/>
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/prettyPhoto.css" rel="stylesheet" type="text/css"/>
+        <link href="css/price-range.css" rel="stylesheet" type="text/css"/>
         <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" href="images/ico/favicon.ico"/>
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png"/>
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png"/>
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png"/>
-        <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png"/>
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
         <header id="header"><!--header-->
@@ -44,7 +36,7 @@
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-<!--                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
+                                    <!--                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
                                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                 </ul>
                             </div>
@@ -114,15 +106,7 @@
                             <div class="mainmenu pull-left">
                                 <ul class="nav navbar-nav collapse navbar-collapse">
                                     <li><a href="index.html" class="active">Home</a></li>
-                                    <!-- <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-        <ul role="menu" class="sub-menu">
-            <li><a href="shop.html">Products</a></li>
-                                                    <li><a href="product-details.html">Product Details</a></li> 
-                                                    <li><a href="checkout.html">Checkout</a></li> 
-                                                    <li><a href="cart.html">Cart</a></li> 
-                                                    <li><a href="login.html">Login</a></li> 
-        </ul>
-    </li>  -->
+                               
                                     <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                         <ul role="menu" class="sub-menu">
                                             <li><a href="blog.html">Blog List</a></li>
@@ -220,31 +204,17 @@
                                 <h:form>
                                     <c:forEach items="#{categoryMB.allcat}" var="i">
                                         <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a href="#{request.contextPath}/category/#{i.catName.toLowerCase()}">#{i.catName}</a>
-                                        </h4>
-                                    </div>
-                                </div>
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a href="#{request.contextPath}/category/#{i.catName.toLowerCase()}">#{i.catName}</a>
+                                                </h4>
+                                            </div>
+                                        </div>
                                     </c:forEach>
                                 </h:form>
-                                
+
                             </div><!--/category-products-->
 
-<!--                            <div class="brands_products">brands_products
-                                <h2>Brands</h2>
-                                <div class="brands-name">
-                                    <ul class="nav nav-pills nav-stacked">
-                                        <li><a href="#"> <span class="pull-right">(50)</span>Acne</a></li>
-                                        <li><a href="#"> <span class="pull-right">(56)</span>Grüne Erde</a></li>
-                                        <li><a href="#"> <span class="pull-right">(27)</span>Albiro</a></li>
-                                        <li><a href="#"> <span class="pull-right">(32)</span>Ronhill</a></li>
-                                        <li><a href="#"> <span class="pull-right">(5)</span>Oddmolly</a></li>
-                                        <li><a href="#"> <span class="pull-right">(9)</span>Boudestijn</a></li>
-                                        <li><a href="#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
-                                    </ul>
-                                </div>
-                            </div>/brands_products-->
 
                             <div class="price-range"><!--price-range-->
                                 <h2>Price Range</h2>
@@ -268,10 +238,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="images/home/product1.jpg" alt="" />
-                                            <h2>$56</h2>
-                                            <p>Easy Polo Black Edition</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+
                                         </div>
                                         <div class="product-overlay">
                                             <div class="overlay-content">

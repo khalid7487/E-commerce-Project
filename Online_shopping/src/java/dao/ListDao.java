@@ -64,5 +64,18 @@ public class ListDao {
          session.close();
          return cList;
      }
+     
+     public List allProductListbyCatName(String catname){
+         SessionFactory factory=HibernateUtil.getSessionFactory();
+         Session session=factory.openSession();
+         System.out.println("check2:"+catname);
+         List<Product> clist=session.createQuery("SELECT product FROM SubCategory subCategory, Category category, Product product WHERE "
+                 + "subCategory.category.catId=category.catId AND product.subCategory.subCatId = subCategory.subCatId AND "
+                 + "(category.catName= '"+catname+"')").list();
+         clist.toString();
+         session.close();
+         System.out.println("hey"+clist);
+         return clist;
+     }
          
 }
