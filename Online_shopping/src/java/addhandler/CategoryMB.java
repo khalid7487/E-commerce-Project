@@ -2,7 +2,10 @@
 package addhandler;
 
 import dao.AddDao;
+import dao.ListDao;
 import entity.Category;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -12,7 +15,17 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class CategoryMB {
     Category category=new Category();
+    private List<Category> allcat=new ArrayList<>();
 
+    public List<Category> getAllcat() {
+        allcat=new ListDao().catListAll();
+        return allcat;
+    }
+
+    public void setAllcat(List<Category> allcat) {
+        this.allcat = allcat;
+    }
+    
     public Category getCategory() {
         return category;
     }

@@ -56,4 +56,13 @@ public class ListDao {
         session.close();
         return cList;
     }
+     public List<Category> catListAll(){
+         SessionFactory factory=HibernateUtil.getSessionFactory();
+         Session session=factory.openSession();
+         List<Category> cList=session.createQuery("SELECT al FROM Category al").list();
+         cList.toString();
+         session.close();
+         return cList;
+     }
+         
 }
